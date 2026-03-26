@@ -1,1 +1,12 @@
+#include <stdio.h>
+int main() {
+    int numeros[] = {00, 11, 22, 33, 44, 55};
+    int tamanho = 6;
+
+    for (int i = tamanho - 1; i >= 0; i--) {
+        printf("%d ", numeros[i]);
+    }
+
+    return 0;
+}
 
