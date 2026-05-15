@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX 5
+
+typedef struct {
+    int codigo;
+    char arquivo[50];
+    int bytes;
+} Doc;
+
+Doc fila[MAX];
+int front = 0, rear = 0;
+
+void enqueue(Doc d) {
+    fila[rear++] = d;
+}
+
+Doc dequeue() {
+    return fila[front++];
+}
+
+int main() {
+    Doc d;
+
+    for (int i = 1; i <= 5; i++) {
+        d.codigo = i;
+        sprintf(d.arquivo, "arquivo%d.txt", i);
+        d.bytes = i * 100;
+        enqueue(d);
+    }
+
+    while (front < rear) {
+        Doc aux = dequeue();
+        printf("Codigo: %d | Nome: %s | Bytes: %d\n",
+               aux.codigo, aux.arquivo, aux.bytes);
+    }
+
+    return 0;
+}
